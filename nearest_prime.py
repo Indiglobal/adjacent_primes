@@ -28,7 +28,7 @@ def is_prime_s(number, verbose=False):
     return True
 
 
-def is_prime_s2(number, primes=[]):
+def is_prime_s2(number, primes=[2]):
     half = int(number / 2)
     # First check for division against out list of primes
     for n in primes:
@@ -42,7 +42,7 @@ def is_prime_s2(number, primes=[]):
 
 
 def nearest_primes(number, verbose=False):
-    primes = []
+    primes = [2]
     half = int(number / 2)
     # check if our number is prime, first time check all the numbers below our number as well
     for n in range(2, number-1):
@@ -55,10 +55,9 @@ def nearest_primes(number, verbose=False):
         lower_prime = primes[-1]
         upper_prime = None
         n = number
-        while upper_prime is None:
+        while is_prime_s2(n, primes):
             n += n
-
-
+        upper_prime = n
 
     output = '{} < {} < {}'.format(lower_prime, number, upper_prime)
     print(output)
@@ -75,7 +74,7 @@ def is_prime_visual(number):
             primes_n += 'X'
     print('{} {} {}'.format(number, primes_n, prime))
 
-
+nearest_primes(1000)
 
 
 
